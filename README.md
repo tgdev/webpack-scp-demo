@@ -1,15 +1,22 @@
-# js-plugin-starter
-VanillaJS plugin starter with Webpack
+# Webpack 4 Code Splitting using SplitChunksPlugin
 
-# Clone this repo
-```
-npx gclone thatisuday/js-plugin-starter [dir]
-```
-Use `npx` to use `gclone` on run-time or `npm install -g gclone`. This will copy this repository with `.git` directory. Remove `.git` directory because you might initialize your own git repository.
+The final version of the example highlighted in [this fantastic article on Medium](https://itnext.io/react-router-and-webpack-v4-code-splitting-using-splitchunksplugin-f0a48f110312) by Uday Hiwarale from ITNext.
 
-# Instructions
-- `npm install` to install dependencies
-- `npm i -D babel-plugin-react` and `npm i -S react react-dom` to use React.js (also add entry `react` to `.babelrc` presets)
-- Execute command `npm run start` for running development server and preview
-- Execute command `npm run build` for creating distribution files
-- Tweak configuration inside `config` folder if necessary
+## Instructions
+
+1. `yarn` to install dependencies
+2. Execute command `yarn start` for running development server and preview
+3. See network tab of console for what chunks are loaded (sync and async)
+
+## Chunks
+
+Defined in `webpack.config.js`.
+
+- **vendor**: Anything in `node_modules` (sync)
+- **common**: Any import shared between 2 or more components (sync)
+- **main**: Everything else required at runtime (sync)
+- **dynamic imports**: 1 per page route (async)
+
+## Credits
+
+- [Uday Hiwarale](https://itnext.io/@thatisuday)
