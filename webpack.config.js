@@ -29,11 +29,28 @@ module.exports = {
 
         // vendor chunk
         vendor: {
+          // chunk name
           name: 'vendor',
           // sync + async chunks
           chunks: 'all',
           // import file path containing node_modules
-          test: /node_modules/
+          test: /node_modules/,
+          // priority
+          priority: 20
+        },
+
+        // common chunk
+        common: {
+          name: 'common',
+          // shared (imported) 2 or more times
+          minChunks: 2,
+          // async only
+          chunks: 'async',
+          priority: 10,
+          // use existing chunk if available
+          reuseExistingChunk: true,
+          // form this chunk irrespective of the size of the chunk (default is 30kb)
+          enforce: true
         }
       }
     }
